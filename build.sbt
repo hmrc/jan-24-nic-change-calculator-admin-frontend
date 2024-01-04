@@ -1,3 +1,4 @@
+import play.sbt.PlayImport.PlayKeys
 import uk.gov.hmrc.DefaultBuildSettings
 
 ThisBuild / majorVersion := 0
@@ -15,6 +16,7 @@ lazy val microservice = Project("jan-24-nic-change-calculator-admin-frontend", f
   )
   .settings(resolvers += Resolver.jcenterRepo)
   .settings(CodeCoverageSettings.settings: _*)
+  .settings(PlayKeys.playDefaultPort := 11402)
 
 lazy val it = project
   .enablePlugins(PlayScala)
