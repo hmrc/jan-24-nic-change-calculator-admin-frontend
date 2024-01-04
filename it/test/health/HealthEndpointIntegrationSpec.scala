@@ -14,36 +14,40 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.jan24nicchangecalculatoradminfrontend.config
+package health
 
+import org.scalatest.concurrent.{IntegrationPatience, ScalaFutures}
 import org.scalatest.matchers.should.Matchers
 import org.scalatest.wordspec.AnyWordSpec
-import org.scalatestplus.play.guice.GuiceOneAppPerSuite
+import org.scalatestplus.play.guice.GuiceOneServerPerSuite
 import play.api.Application
-import play.api.test.FakeRequest
 import play.api.inject.guice.GuiceApplicationBuilder
+import play.api.libs.ws.WSClient
 
-class ErrorHandlerSpec extends AnyWordSpec
-  with Matchers
-  with GuiceOneAppPerSuite {
+class HealthEndpointIntegrationSpec
+  extends AnyWordSpec
+     with Matchers
+     with ScalaFutures
+     with IntegrationPatience
+     with GuiceOneServerPerSuite {
+
+  private val wsClient = app.injector.instanceOf[WSClient]
+  private val baseUrl  = s"http://localhost:$port"
 
   override def fakeApplication(): Application =
-    new GuiceApplicationBuilder()
-      .configure(
-        "metrics.jvm"     -> false,
-        "metrics.enabled" -> false
-      )
+    GuiceApplicationBuilder()
+      .configure("metrics.enabled" -> false)
       .build()
 
-  private val fakeRequest = FakeRequest("GET", "/")
+  "service health endpoint" should {
+    "respond with 200 status" in {
+      val response =
+        wsClient
+          .url(s"$baseUrl/ping/ping")
+          .get()
+          .futureValue
 
-  private val handler = app.injector.instanceOf[ErrorHandler]
-
-  "standardErrorTemplate" should {
-    "render HTML" in {
-      val html = handler.standardErrorTemplate("title", "heading", "message")(fakeRequest)
-      html.contentType shouldBe "text/html"
+      response.status shouldBe 200
     }
   }
-
 }

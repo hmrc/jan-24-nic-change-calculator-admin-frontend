@@ -14,7 +14,7 @@
  * limitations under the License.
  *@
 
-@import uk.gov.hmrc.jan24nicchangecalculatoradminfrontend.config.AppConfig
+@import config.AppConfig
 @import uk.gov.hmrc.hmrcfrontend.views.html.helpers.HmrcStandardPage
 @import uk.gov.hmrc.hmrcfrontend.views.viewmodels.hmrcstandardpage.HmrcStandardPageParams
 
@@ -22,6 +22,7 @@
         appConfig: AppConfig,
         hmrcStandardPage: HmrcStandardPage
 )
+
 @(pageTitle: Option[String] = None)(contentBlock: Html)(implicit request: Request[_], messages: Messages)
 
 @hmrcStandardPage(

@@ -14,13 +14,23 @@
  * limitations under the License.
  */
 
-package uk.gov.hmrc.jan24nicchangecalculatoradminfrontend.config
+package controllers
+
+import play.api.mvc.{Action, AnyContent, MessagesControllerComponents}
+import views.html.HelloWorldPage
+import uk.gov.hmrc.play.bootstrap.frontend.controller.FrontendController
 
 import javax.inject.{Inject, Singleton}
-import play.api.Configuration
+import scala.concurrent.Future
 
 @Singleton
-class AppConfig @Inject()(config: Configuration) {
-  val welshLanguageSupportEnabled: Boolean = config.getOptional[Boolean]("features.welsh-language-support").getOrElse(false)
+class HelloWorldController @Inject()(
+  mcc: MessagesControllerComponents,
+  helloWorldPage: HelloWorldPage)
+    extends FrontendController(mcc) {
+
+  val helloWorld: Action[AnyContent] = Action.async { implicit request =>
+    Future.successful(Ok(helloWorldPage()))
+  }
 
 }
