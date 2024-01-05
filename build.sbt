@@ -1,4 +1,5 @@
 import play.sbt.PlayImport.PlayKeys
+import play.sbt.routes.RoutesKeys
 import uk.gov.hmrc.DefaultBuildSettings
 
 ThisBuild / majorVersion := 0
@@ -17,6 +18,20 @@ lazy val microservice = Project("jan-24-nic-change-calculator-admin-frontend", f
   .settings(resolvers += Resolver.jcenterRepo)
   .settings(CodeCoverageSettings.settings: _*)
   .settings(PlayKeys.playDefaultPort := 11402)
+  .settings(TwirlKeys.templateImports ++= Seq(
+    "play.twirl.api.HtmlFormat",
+    "play.twirl.api.HtmlFormat._",
+    "uk.gov.hmrc.govukfrontend.views.html.components._",
+    "uk.gov.hmrc.hmrcfrontend.views.html.components._",
+    "uk.gov.hmrc.hmrcfrontend.views.html.helpers._",
+    "uk.gov.hmrc.hmrcfrontend.views.config._",
+    "controllers.routes._",
+    "views.ViewUtils._"
+  ))
+  .settings(RoutesKeys.routesImport ++= Seq(
+    "java.time.Instant",
+    "models._"
+  ))
 
 lazy val it = project
   .enablePlugins(PlayScala)
