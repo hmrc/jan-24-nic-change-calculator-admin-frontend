@@ -1,0 +1,57 @@
+@*
+ * Copyright 2024 HM Revenue & Customs
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *@
+
+@this(
+        layout: templates.Layout
+)
+
+@(summaryData: CalculationSummaryData)(implicit request: Request[_], messages: Messages)
+
+@layout(pageTitle = Some(titleNoForm(messages("calculationSummary.title")))) {
+
+    <h1 class="govuk-heading-l">@messages("calculationSummary.heading")</h1>
+
+    <dl class="govuk-summary-list govuk-summary-list--long-key">
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">@messages("calculationSummary.from")</dt>
+            <dd>@summaryData.from.map(instant)</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">@messages("calculationSummary.to")</dt>
+            <dd>@summaryData.to.map(instant)</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">@messages("calculationSummary.numberOfCalculations")</dt>
+            <dd>@number(summaryData.numberOfCalculations)</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">@messages("calculationSummary.numberOfUniqueSessions")</dt>
+            <dd>@number(summaryData.numberOfUniqueSessions)</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">@messages("calculationSummary.totalSavings")</dt>
+            <dd>@currency(summaryData.totalSavings)</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">@messages("calculationSummary.totalSavingsAveragedBySession")</dt>
+            <dd>@currency(summaryData.totalSavingsAveragedBySession)</dd>
+        </div>
+        <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">@messages("calculationSummary.averageSalary")</dt>
+            <dd>@currency(summaryData.averageSalary)</dd>
+        </div>
+    </dl>
+}
