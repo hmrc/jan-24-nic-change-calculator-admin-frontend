@@ -22,6 +22,7 @@ import play.api.i18n.Messages
 import java.text.NumberFormat
 import java.time.{Instant, LocalDate, LocalDateTime}
 import java.time.format.DateTimeFormatter
+import java.util.Locale
 
 object ViewUtils {
 
@@ -42,8 +43,8 @@ object ViewUtils {
     DateTimeFormatter.ISO_INSTANT.format(i)
 
   def number(n: Long): String =
-    NumberFormat.getIntegerInstance.format(n)
+    NumberFormat.getIntegerInstance(Locale.UK).format(n)
 
   def currency(c: BigDecimal): String =
-    NumberFormat.getCurrencyInstance.format(c)
+    NumberFormat.getCurrencyInstance(Locale.UK).format(c)
 }
