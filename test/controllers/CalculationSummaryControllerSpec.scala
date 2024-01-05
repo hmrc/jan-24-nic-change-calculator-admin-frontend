@@ -80,7 +80,7 @@ class CalculationSummaryControllerSpec
           FakeRequest(GET, routes.CalculationSummaryController.onPageLoad(None, None).url)
             .withSession("authToken" -> "Token some-token")
 
-        val summaryData = CalculationSummaryData(None, None, 1, 2, 3, 4, 5)
+        val summaryData = CalculationSummaryData(None, None, 1, 2, 3, 4, 5, 6)
 
         val predicate = Permission(Resource(ResourceType("jan-24-nic-change-calculator-admin-frontend"), ResourceLocation("summary")), IAAction("ADMIN"))
         when(mockStubBehaviour.stubAuth(eqTo(Some(predicate)), eqTo(Retrieval.username))).thenReturn(Future.successful(Username("username")))
@@ -102,7 +102,7 @@ class CalculationSummaryControllerSpec
           FakeRequest(GET, routes.CalculationSummaryController.onPageLoad(Some(from), None).url)
             .withSession("authToken" -> "Token some-token")
 
-        val summaryData = CalculationSummaryData(Some(from), None, 1, 2, 3, 4, 5)
+        val summaryData = CalculationSummaryData(Some(from), None, 1, 2, 3, 4, 5, 6)
 
         val predicate = Permission(Resource(ResourceType("jan-24-nic-change-calculator-admin-frontend"), ResourceLocation("summary")), IAAction("ADMIN"))
         when(mockStubBehaviour.stubAuth(eqTo(Some(predicate)), eqTo(Retrieval.username))).thenReturn(Future.successful(Username("username")))
@@ -124,7 +124,7 @@ class CalculationSummaryControllerSpec
           FakeRequest(GET, routes.CalculationSummaryController.onPageLoad(None, Some(to)).url)
             .withSession("authToken" -> "Token some-token")
 
-        val summaryData = CalculationSummaryData(None, Some(to), 1, 2, 3, 4, 5)
+        val summaryData = CalculationSummaryData(None, Some(to), 1, 2, 3, 4, 5, 6)
 
         val predicate = Permission(Resource(ResourceType("jan-24-nic-change-calculator-admin-frontend"), ResourceLocation("summary")), IAAction("ADMIN"))
         when(mockStubBehaviour.stubAuth(eqTo(Some(predicate)), eqTo(Retrieval.username))).thenReturn(Future.successful(Username("username")))
@@ -147,7 +147,7 @@ class CalculationSummaryControllerSpec
           FakeRequest(GET, routes.CalculationSummaryController.onPageLoad(Some(from), Some(to)).url)
             .withSession("authToken" -> "Token some-token")
 
-        val summaryData = CalculationSummaryData(Some(from), Some(to), 1, 2, 3, 4, 5)
+        val summaryData = CalculationSummaryData(Some(from), Some(to), 1, 2, 3, 4, 5, 6)
 
         val predicate = Permission(Resource(ResourceType("jan-24-nic-change-calculator-admin-frontend"), ResourceLocation("summary")), IAAction("ADMIN"))
         when(mockStubBehaviour.stubAuth(eqTo(Some(predicate)), eqTo(Retrieval.username))).thenReturn(Future.successful(Username("username")))

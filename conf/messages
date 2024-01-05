@@ -6,6 +6,7 @@ calculationSummary.heading = Summary of calculations
 calculationSummary.from = From
 calculationSummary.to = To
 calculationSummary.numberOfCalculations = Number of calculations
+calculationSummary.numberOfCalculationsWithNoSavings = Number of calculations with no savings
 calculationSummary.numberOfUniqueSessions = Number of unique sessions
 calculationSummary.totalSavings = Total savings
 calculationSummary.totalSavingsAveragedBySession = Total savings (averaged by session)
