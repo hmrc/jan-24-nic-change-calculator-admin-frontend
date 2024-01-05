@@ -28,7 +28,6 @@ package object models {
       private val dateFormat = DateTimeFormatter.ISO_INSTANT
 
       override def bind(key: String, params: Map[String, Seq[String]]): Option[Either[String, Instant]] = {
-        println(params)
         for {
           values <- params.get(key)
           value  <- values.headOption
