@@ -1,2 +1,12 @@
 service.name = jan-24-nic-change-calculator-admin-frontend
 service.text = This is your new service
+
+summary.title = Summary
+summary.heading = Summary of calculations
+summary.from = From
+summary.to = To
+summary.numberOfCalculations = Number of calculations
+summary.numberOfUniqueSessions = Number of unique sessions
+summary.totalSavings = Total savings
+summary.totalSavingsAveragedBySession = Total savings (averaged by session)
+summary.averageSalary = Average salary
