@@ -57,7 +57,7 @@ class CalculationConnectorSpec
 
       "when `from` and `to` are not specified" in {
 
-        val summaryData = CalculationSummaryData(None, None, 1, 2, 3, 4, 5, 6)
+        val summaryData = CalculationSummaryData(None, None, 1, 2, 3, 4, 5, 6, 7)
 
         server.stubFor(
           get(urlEqualTo("/jan-24-nic-change-calculator/summary"))
@@ -71,7 +71,7 @@ class CalculationConnectorSpec
 
         val instant = Instant.ofEpochSecond(1)
 
-        val summaryData = CalculationSummaryData(None, None, 1, 2, 3, 4, 5, 6)
+        val summaryData = CalculationSummaryData(None, None, 1, 2, 3, 4, 5, 6, 7)
 
         server.stubFor(
           get(urlEqualTo("/jan-24-nic-change-calculator/summary?from=1970-01-01T00:00:01Z"))
@@ -85,7 +85,7 @@ class CalculationConnectorSpec
 
         val instant = Instant.ofEpochSecond(1)
 
-        val summaryData = CalculationSummaryData(None, None, 1, 2, 3, 4, 5, 6)
+        val summaryData = CalculationSummaryData(None, None, 1, 2, 3, 4, 5, 6, 7)
 
         server.stubFor(
           get(urlEqualTo("/jan-24-nic-change-calculator/summary?to=1970-01-01T00:00:01Z"))
@@ -100,7 +100,7 @@ class CalculationConnectorSpec
         val from = Instant.ofEpochSecond(1)
         val to = Instant.ofEpochSecond(2)
 
-        val summaryData = CalculationSummaryData(None, None, 1, 2, 3, 4, 5, 6)
+        val summaryData = CalculationSummaryData(None, None, 1, 2, 3, 4, 5, 6, 7)
 
         server.stubFor(
           get(urlEqualTo("/jan-24-nic-change-calculator/summary?from=1970-01-01T00:00:01Z&to=1970-01-01T00:00:02Z"))
